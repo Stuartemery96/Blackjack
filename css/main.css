@@ -12,7 +12,7 @@ body {
 }
 
 #game-container {
-  background-image: url();
+  background-image: url('/Imgs/Background/table.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   grid-template-columns: repeat(3, 1fr);
@@ -22,6 +22,7 @@ body {
   width: 100vw;
   margin-top: -4vmin;
   padding: 2vmin;
+  background-size: 100%;
 }
 
 h1 {
