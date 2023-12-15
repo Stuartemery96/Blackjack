@@ -3,8 +3,31 @@
 }
 
 body {
-  background-image: url('https://i.imgur.com/ouMWOqM.jpg');
-  background-position: top, center;
+  display: flex;
+  background-color: darkgray;
+  height: 100vh;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-container {
+  background-image: url();
+  background-position: center center;
   background-repeat: no-repeat;
-  height: 1vh;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  margin-top: -4vmin;
+  padding: 2vmin;
+}
+
+h1 {
+  color: white;
+}
+
+h3 {
+  color: white;
 }
