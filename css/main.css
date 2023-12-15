@@ -29,8 +29,42 @@ body {
 
 h1 {
   color: white;
+  grid-column-start: 2;
+  grid-row-start: 1;
+  justify-self: center;
+  align-self: flex-start;
 }
 
 h3 {
   color: white;
+  grid-column-start: 2;
+  grid-row-start: 2;
+  justify-self: center;
+  align-self: flex-start;
+}
+
+#bet-divs {
+  grid-column-start: 1;
+  grid-row-start: 3;
+  justify-self: center;
+  align-self: flex-end;
+}
+
+#bet-divs>div {
+  display: inline-block;
+}
+
+#player-buttons {
+  grid-column-start: 3;
+  grid-row-start: 3;
+  justify-self: center;
+  align-self: flex-end;
+}
+
+#player-buttons>button {
+  color: #1b0000;
+  padding: 10px;
+  border-radius: 12px;
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(135deg, #C54301, #FFDD7E)
 }
