@@ -23,6 +23,11 @@ init();
 
 function init() {
   bank = 500;
+  outcome = null;
 
+  render();
+}
 
+function render() {
+  renderBank();
 }
