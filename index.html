@@ -12,20 +12,24 @@
 
 <body>
   <div id="game-container">
-    <h1>BLACKJACK</h1>
-    <h3>win/lose</h3>
-    <div id="player-buttons">
-      <button>Deal</button>
-      <button>Hit</button>
-      <button>Stand</button>
-      <button>Double</button>
+    <h1 id="msg"></h1>
+    <section id="dealer-hand" class="card-container"></section>
+    <div>Dealer Has: <span id="dealer-total"></span></div>
+    <section id="player-hand" class="card-container"></section>
+    <div>Player Has: <span id="player-total"></span></div>
+    <button id="deal-btn">Deal</button>
+    <div id="hand-active-controls">
+      <button id="hit-btn">Hit</button>
+      <button id="stand-btn">Stand</button>
+      <button id="double-btn">Double</button>
     </div>
-    <section id="bet-divs">
-      <p id="bank">You have $</p>
-      <div><img src="Imgs/Chips/$1-chip.png" height="35"></div>
-      <div><img src="Imgs/Chips/$5-chip.png" height="35"></div>
-      <div><img src="Imgs/Chips/$25-chip.png" height="35"></div>
-      <div><img src="Imgs/Chips/$100-chip.png" height="35"></div>
+    <div id="your-bet">Bet Amount: $<span id="bet"></div>
+    <p id="bank">Bank: $<span id="bankroll"></p>
+    <section id="bet-controls">
+      <button>$1</button>
+      <button>$5</button>
+      <button>$25</button>
+      <button>$100</button>
     </section>
   </div>
 </body>
