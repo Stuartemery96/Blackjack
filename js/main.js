@@ -2,6 +2,7 @@
 const suits = ['s', 'c', 'd', 'h'];
 const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
 
+
 const mainDeck = buildMainDeck();
 
 /*----- app's state (variables) -----*/
@@ -38,9 +39,9 @@ function handleStand() {
   dealerPlay(function () {
     if (pTotal === dTotal) {
       outcome = 'T';
-    } else if (pTotal > dTotal) {
+    } else if (pTotal > dTotal || dTotal > 21) {
       outcome = 'P';
-    } else {
+    } else if (dTotal > pTotal && dTotal <= 21) {
       outcome = 'D';
     }
     settleBet();
@@ -63,7 +64,6 @@ function dealerPlay(cb) {
 }
 
 function handleDouble() {
-  bet = bet * 2;
   pHand.push(deck.pop());
   pTotal = getHandTotal(pHand);
   handleStand();
@@ -75,7 +75,7 @@ function handleHit() {
   if (pTotal > 21) {
     outcome = 'D';
     settleBet();
-  } else if (pTotal = 21) {
+  } else if (pTotal === 21) {
     handleStand();
   }
   render();
@@ -113,9 +113,9 @@ function settleBet() {
   if (outcome === 'PBJ') {
     bank += bet + (bet * 1.5);
   } else if (outcome === 'P') {
-    bank += bet + bet;
+    bank += bet * 2;
   } else if (outcome === 'T') {
-    bank = bet;
+    bank += bet;
   }
   bet = 0;
 }
