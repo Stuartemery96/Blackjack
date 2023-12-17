@@ -32,7 +32,8 @@ const handActiveControlsEl = document.getElementById('hand-active-controls');
 const handOverControlsEl = document.getElementById('bet-controls');
 const dealBtn = document.getElementById('deal-btn');
 const betBtns = document.querySelectorAll('#bet-controls > button');
-const playAgnBtn = document.getElementById('replay-Btn')
+const playAgnBtn = document.getElementById('replay-Btn');
+const doubleBtn = document.getElementById('double-btn');
 
 /*----- event listeners -----*/
 dealBtn.addEventListener('click', handleDeal);
@@ -74,6 +75,8 @@ function dealerPlay(cb) {
 }
 
 function handleDouble() {
+  bankEl.innerHTML = bank -= bet;
+  betEl.innerHTML = bet + bet;
   pHand.push(deck.pop());
   pTotal = getHandTotal(pHand);
   if (pTotal > 21) {
@@ -190,7 +193,7 @@ function render() {
   renderHands();
   renderControls();
   renderBetBtns();
-  msgEl.innerHTML = MSG_LOOKUP[outcome];
+  renderMessage();
 }
 
 
@@ -206,6 +209,12 @@ function renderControls() {
   handActiveControlsEl.style.visibility = !handInPlay() ? 'hidden' : 'visible';
   dealBtn.style.visibility = bet >= 10 && !handInPlay() ? 'visible' : 'hidden';
   playAgnBtn.style.visibility = bank >= 10 || bet > 10 ? 'hidden' : 'visible';
+  doubleBtn.disabled = bet > bank;
+}
+
+function renderMessage() {
+  msgEl.style.visibility = handInPlay() || outcome === null ? 'hidden' : 'visible';
+  msgEl.innerHTML = MSG_LOOKUP[outcome];
 }
 
 function renderHands() {
