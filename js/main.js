@@ -1,14 +1,7 @@
 /*----- constants -----*/
 const suits = ['s', 'c', 'd', 'h'];
 const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
-const MSG_LOOKUP = {
-  null: 'Good Luck!',
-  'T': "It's a Push",
-  'P': 'Player Wins!',
-  'D': 'Dealer Wins',
-  'PBJ': 'Player Has Blackjack 😃',
-  'DBJ': 'Dealer Has Blackjack 😔',
-};
+
 const mainDeck = buildMainDeck();
 
 /*----- app's state (variables) -----*/
@@ -122,7 +115,7 @@ function settleBet() {
   } else if (outcome === 'P') {
     bank += bet + bet;
   } else if (outcome === 'T') {
-    bank = bet + bet;
+    bank = bet;
   }
   bet = 0;
 }

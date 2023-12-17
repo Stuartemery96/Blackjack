@@ -84,15 +84,11 @@ h3 {
 
 #bank {
   color: white;
+  grid-column-start: 1;
+  grid-row-start: 3;
+  justify-self: center;
+  align-self: center;
 }
-
-/* #dealer-hand {
-  background-color: white;
-}
-
-#player-hand {
-  background-color: white;
-} */
 
 #dealer-hand {
   grid-column-start: 2;
@@ -115,4 +111,20 @@ h3 {
   grid-row-start: 2;
   justify-self: center;
   align-self: center;
+}
+
+#dscore {
+  color: white;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  justify-self: center;
+  align-self: center;
+}
+
+#pscore {
+  color: white;
+  grid-column-start: 3;
+  grid-row-start: 3;
+  justify-self: center;
+  align-self: flex-start;
 }
