@@ -1,6 +1,14 @@
 /*----- constants -----*/
 const suits = ['s', 'c', 'd', 'h'];
 const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K', 'A'];
+const MSG_LOOKUP = {
+  null: '',
+  'T': "It's a Push",
+  'P': 'Player Wins!',
+  'D': 'Dealer Wins',
+  'PBJ': 'Player Has Blackjack 🔥',
+  'DBJ': 'Dealer Has Blackjack 😔',
+};
 
 
 const mainDeck = buildMainDeck();
@@ -24,6 +32,7 @@ const handActiveControlsEl = document.getElementById('hand-active-controls');
 const handOverControlsEl = document.getElementById('bet-controls');
 const dealBtn = document.getElementById('deal-btn');
 const betBtns = document.querySelectorAll('#bet-controls > button');
+const playAgnBtn = document.getElementById('replay-Btn')
 
 /*----- event listeners -----*/
 dealBtn.addEventListener('click', handleDeal);
@@ -31,6 +40,7 @@ document.getElementById('hit-btn').addEventListener('click', handleHit);
 document.getElementById('stand-btn').addEventListener('click', handleStand);
 document.getElementById('double-btn').addEventListener('click', handleDouble)
 document.getElementById('bet-controls').addEventListener('click', handleBet);
+playAgnBtn.addEventListener('click', init);
 
 /*----- functions -----*/
 init();
@@ -66,7 +76,23 @@ function dealerPlay(cb) {
 function handleDouble() {
   pHand.push(deck.pop());
   pTotal = getHandTotal(pHand);
-  handleStand();
+  if (pTotal > 21) {
+    outcome = 'D';
+    settleDouble();
+    render();
+  } else {
+    dealerPlay(function () {
+      if (pTotal === dTotal) {
+        outcome = 'T';
+      } else if (pTotal > dTotal || dTotal > 21) {
+        outcome = 'P';
+      } else if (dTotal > pTotal) {
+        outcome = 'D';
+      }
+      settleDouble();
+      render();
+    });
+  }
 }
 
 function handleHit() {
@@ -120,6 +146,17 @@ function settleBet() {
   bet = 0;
 }
 
+function settleDouble() {
+  if (outcome === 'P') {
+    bank += bet * 3;
+  } else if (outcome === 'D') {
+    bank -= bet;
+  } else if (outcome === 'T') {
+    bank += bet;
+  }
+  bet = 0;
+}
+
 // compute the best score for the hand passed in
 function getHandTotal(hand) {
   let total = 0;
@@ -153,7 +190,9 @@ function render() {
   renderHands();
   renderControls();
   renderBetBtns();
+  msgEl.innerHTML = MSG_LOOKUP[outcome];
 }
+
 
 function renderBetBtns() {
   betBtns.forEach(function (btn) {
@@ -166,6 +205,7 @@ function renderControls() {
   handOverControlsEl.style.visibility = handInPlay() ? 'hidden' : 'visible';
   handActiveControlsEl.style.visibility = !handInPlay() ? 'hidden' : 'visible';
   dealBtn.style.visibility = bet >= 10 && !handInPlay() ? 'visible' : 'hidden';
+  playAgnBtn.style.visibility = bank >= 10 || bet > 10 ? 'hidden' : 'visible';
 }
 
 function renderHands() {
