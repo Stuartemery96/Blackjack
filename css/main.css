@@ -72,8 +72,8 @@ h1 {
   background-size: contain;
   border: transparent;
   color: transparent;
-  height: 3.15rem;
-  width: 3.15rem;
+  height: 4rem;
+  width: 4rem;
 }
 
 #bet-controls>#bet5 {
@@ -81,8 +81,8 @@ h1 {
   background-size: contain;
   border: transparent;
   color: transparent;
-  height: 3.15rem;
-  width: 3.15rem;
+  height: 4rem;
+  width: 4rem;
 }
 
 #bet-controls>#bet25 {
@@ -90,8 +90,8 @@ h1 {
   background-size: contain;
   border: transparent;
   color: transparent;
-  height: 3.15rem;
-  width: 3.15rem;
+  height: 4rem;
+  width: 4rem;
 }
 
 #bet-controls>#bet100 {
@@ -99,8 +99,8 @@ h1 {
   background-size: 100%;
   border: transparent;
   color: transparent;
-  height: 3.15rem;
-  width: 3.15rem;
+  height: 4rem;
+  width: 4rem;
 }
 
 #hand-active-controls {

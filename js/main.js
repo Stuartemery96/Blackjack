@@ -68,7 +68,7 @@ function dealerPlay() {
       clearInterval(timerId);
       if (pTotal === dTotal) {
         outcome = 'T';
-      } else if (pTotal > dTotal || dTotal > 21) {
+      } else if (pTotal > dTotal && pTotal <= 21 || dTotal > 21) {
         outcome = 'P';
       } else if (dTotal > pTotal && dTotal <= 21) {
         outcome = 'D';
@@ -85,10 +85,10 @@ function handleDouble() {
   pHand.push(deck.pop());
   pTotal = getHandTotal(pHand);
   playSound('card');
+  doubleBtn.disabled = true;
   handleStand();
   renderBets();
 }
-
 
 function handleHit() {
   pHand.push(deck.pop());
