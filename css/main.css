@@ -34,7 +34,7 @@ h1 {
     0 0 92px #0fa,
     0 0 102px #0fa,
     0 0 151px #0fa;
-  background: linear-gradient(135deg, #68E3F6, #66FF40);
+  /* background: linear-gradient(135deg, #68E3F6, #66FF40); */
   padding: 0.5rem;
   border-radius: 25%;
   grid-column-start: 2;
@@ -52,6 +52,16 @@ h1 {
 
 #bet-controls>button {
   border-radius: 50%;
+  box-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+  ;
   width: 35px;
   height: 35px;
   padding: 0;
