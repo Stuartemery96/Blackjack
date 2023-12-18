@@ -9,6 +9,10 @@ const MSG_LOOKUP = {
   'PBJ': 'Player Has Blackjack 🔥',
   'DBJ': 'Dealer Has Blackjack 😔',
 };
+const sounds = {
+  card: document.getElementById('card-sound'),
+  chip: document.getElementById('chip-sound'),
+}
 
 
 const mainDeck = buildMainDeck();
@@ -34,6 +38,7 @@ const dealBtn = document.getElementById('deal-btn');
 const betBtns = document.querySelectorAll('#bet-controls > button');
 const playAgnBtn = document.getElementById('replay-Btn');
 const doubleBtn = document.getElementById('double-btn');
+const player = new Audio();
 
 /*----- event listeners -----*/
 dealBtn.addEventListener('click', handleDeal);
@@ -255,4 +260,9 @@ function buildMainDeck() {
     });
   });
   return deck;
+}
+
+function playSound(name) {
+  player.src = sounds[name];
+  player.play();
 }
