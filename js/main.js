@@ -10,8 +10,8 @@ const MSG_LOOKUP = {
   'DBJ': 'Dealer Has Blackjack 😔',
 };
 const sounds = {
-  card: document.getElementById('card-sound'),
-  chip: document.getElementById('chip-sound'),
+  card: 'sounds/card_sound.wav',
+  chip: 'sounds/chip_sound.wav',
 }
 
 
@@ -52,60 +52,48 @@ playAgnBtn.addEventListener('click', init);
 init();
 
 function handleStand() {
-  dealerPlay(function () {
-    if (pTotal === dTotal) {
-      outcome = 'T';
-    } else if (pTotal > dTotal || dTotal > 21) {
-      outcome = 'P';
-    } else if (dTotal > pTotal && dTotal <= 21) {
-      outcome = 'D';
-    }
-    settleBet();
-    render();
-  });
+  dealerPlay();
 }
 
-function dealerPlay(cb) {
+function dealerPlay() {
   outcome = 'D';
   renderHands();
-  setTimeout(function () {
+  const timerId = setInterval(function () {
     if (dTotal < 17) {
       dHand.push(deck.pop());
       dTotal = getHandTotal(dHand);
-      dealerPlay(cb);
+      renderHands();
+      playSound('card');
     } else {
-      cb();
+      clearInterval(timerId);
+      if (pTotal === dTotal) {
+        outcome = 'T';
+      } else if (pTotal > dTotal || dTotal > 21) {
+        outcome = 'P';
+      } else if (dTotal > pTotal && dTotal <= 21) {
+        outcome = 'D';
+      }
+      settleBet();
+      render();
     }
   }, 1500);
 }
 
 function handleDouble() {
-  bankEl.innerHTML = bank -= bet;
-  betEl.innerHTML = bet + bet;
+  bank -= bet;
+  bet += bet;
   pHand.push(deck.pop());
   pTotal = getHandTotal(pHand);
-  if (pTotal > 21) {
-    outcome = 'D';
-    settleDouble();
-    render();
-  } else {
-    dealerPlay(function () {
-      if (pTotal === dTotal) {
-        outcome = 'T';
-      } else if (pTotal > dTotal || dTotal > 21) {
-        outcome = 'P';
-      } else if (dTotal > pTotal) {
-        outcome = 'D';
-      }
-      settleDouble();
-      render();
-    });
-  }
+  playSound('card');
+  handleStand();
+  renderBets();
 }
+
 
 function handleHit() {
   pHand.push(deck.pop());
   pTotal = getHandTotal(pHand);
+  playSound('card');
   if (pTotal > 21) {
     outcome = 'D';
     settleBet();
@@ -140,6 +128,7 @@ function handleDeal() {
     outcome = 'PBJ'; // Player wins with BJ
   }
   if (outcome) settleBet();
+  playSound('card');
   render();
 }
 
@@ -148,17 +137,6 @@ function settleBet() {
     bank += bet + (bet * 1.5);
   } else if (outcome === 'P') {
     bank += bet * 2;
-  } else if (outcome === 'T') {
-    bank += bet;
-  }
-  bet = 0;
-}
-
-function settleDouble() {
-  if (outcome === 'P') {
-    bank += bet * 3;
-  } else if (outcome === 'D') {
-    bank -= bet;
   } else if (outcome === 'T') {
     bank += bet;
   }
@@ -193,12 +171,17 @@ function init() {
 
 // Visualize all state to the DOM
 function render() {
-  bankEl.innerHTML = bank;
-  betEl.innerHTML = bet;
+  renderBets();
   renderHands();
   renderControls();
   renderBetBtns();
   renderMessage();
+}
+
+
+function renderBets() {
+  bankEl.innerHTML = bank;
+  betEl.innerHTML = bet;
 }
 
 
