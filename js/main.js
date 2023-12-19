@@ -107,8 +107,13 @@ function handleBet(evt) {
   const betBtn = evt.target;
   if (betBtn.tagName !== 'BUTTON') return;
   const betAmt = parseInt(betBtn.innerHTML.replace('$', ''));
-  bet += betAmt;
-  bank -= betAmt;
+  if (evt.shiftKey) {
+    bet -= betAmt;
+    bank += betAmt
+  } else {
+    bet += betAmt;
+    bank -= betAmt;
+  }
   playSound('chip');
   render();
 }
