@@ -59,7 +59,7 @@ function dealerPlay() {
   outcome = 'D';
   renderHands();
   const timerId = setInterval(function () {
-    if (dTotal < 17) {
+    if (pTotal <= 21 && dTotal < 17) {
       dHand.push(deck.pop());
       dTotal = getHandTotal(dHand);
       renderHands();
@@ -70,7 +70,7 @@ function dealerPlay() {
         outcome = 'T';
       } else if (pTotal > dTotal && pTotal <= 21 || dTotal > 21) {
         outcome = 'P';
-      } else if (dTotal > pTotal && dTotal <= 21) {
+      } else if (dTotal > pTotal && dTotal <= 21 || pTotal > 21) {
         outcome = 'D';
       }
       settleBet();
