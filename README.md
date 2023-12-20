@@ -14,7 +14,7 @@ A game of luck or skill? That is for you to decide.
 * CardStarter CSS Library
 
 # Getting Started
-
+[Play Blackjack](https://stuartemery96.github.io/Blackjack/)
 
 # Planning Files
 ![Wireframe](planning/Wireframe.png)
