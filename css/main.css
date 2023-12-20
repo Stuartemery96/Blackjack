@@ -5,7 +5,7 @@
 body {
   font-family: 'Tilt Neon', sans-serif;
   display: flex;
-  background-image: url(/imgs/Background/bkgrnd.jpg);
+  background-image: url(/imgs/background/bkgrnd.jpg);
   height: 100vh;
   margin: 0;
   justify-content: center;
@@ -86,7 +86,7 @@ h3 {
 }
 
 #bet-controls>#bet1 {
-  background-image: url('/imgs/Chips/$1-chip.png');
+  background-image: url('/imgs/chips/$1-chip.png');
   background-size: contain;
   border: transparent;
   color: transparent;
@@ -95,7 +95,7 @@ h3 {
 }
 
 #bet-controls>#bet5 {
-  background-image: url('/imgs/Chips/$5-chip.png');
+  background-image: url('/imgs/chips/$5-chip.png');
   background-size: contain;
   border: transparent;
   color: transparent;
@@ -104,7 +104,7 @@ h3 {
 }
 
 #bet-controls>#bet25 {
-  background-image: url('/imgs/Chips/$25-chip.png');
+  background-image: url('/imgs/chips/$25-chip.png');
   background-size: contain;
   border: transparent;
   color: transparent;
@@ -113,7 +113,7 @@ h3 {
 }
 
 #bet-controls>#bet100 {
-  background-image: url('/imgs/Chips/$100-chip.png');
+  background-image: url('/imgs/chips/$100-chip.png');
   background-size: 100%;
   border: transparent;
   color: transparent;
