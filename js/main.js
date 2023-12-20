@@ -8,6 +8,7 @@ const MSG_LOOKUP = {
   'D': 'Dealer Wins',
   'PBJ': 'Player Has Blackjack 🔥',
   'DBJ': 'Dealer Has Blackjack 😔',
+  'DLRPLY': '',
 };
 const sounds = {
   card: 'sounds/card_sound.wav',
@@ -56,7 +57,7 @@ function handleStand() {
 }
 
 function dealerPlay() {
-  outcome = 'D';
+  outcome = 'DLRPLY';
   renderHands();
   const timerId = setInterval(function () {
     if (pTotal <= 21 && dTotal < 17) {
@@ -215,7 +216,8 @@ function renderHands() {
   playerTotalEl.innerHTML = pTotal;
   dealerTotalEl.innerHTML = outcome ? dTotal : '??';
   playerHandEl.innerHTML = pHand.map(card => `<div class="card large ${card.face}"></div>`).join('');
-  dealerHandEl.innerHTML = dHand.map((card, idx) => `<div class="card large ${idx === 1 && !outcome ? 'back' : card.face}"></div>`).join('');
+  dealerHandEl.innerHTML = dHand.map((card, idx) => `<div class="card large ${idx === 1 && !outcome || idx === 1 && !outcome === 'DLRPLY' ? 'back' : card.face
+    } "></div>`).join('');
 }
 
 function handInPlay() {
