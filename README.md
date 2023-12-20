@@ -14,3 +14,9 @@ A game of luck or skill? That is for you to decide.
 * CardStarter CSS Library
 
 # Getting Started
+
+
+# Planning Files
+![Wireframe](planning/Wireframe.png)
+
+[Pseudo-code](planning/Blackjack%20Pseudo-code.html)
