@@ -26,7 +26,7 @@ body {
 
 h3 {
   grid-column-start: 1;
-  grid-row-start: 1;
+  grid-row-start: 2;
   justify-self: flex-start;
   align-self: flex-start;
   color: #8D00FA;
