@@ -17,6 +17,4 @@ A game of luck or skill? That is for you to decide.
 
 [Click to play Blackjack](https://stuartemery96.github.io/Blackjack/)
 
-[click to View Project Planning](/planning/Blackjack%20Pseudo-code.html)
-
-![Original Wireframe](/planning/Wireframe.png)
+[click to View Project Planning](/planning/)
